@@ -1,0 +1,90 @@
+// Microsoft Visual C++ generated resource script.
+//
+#include "resource.h"
+
+#define APSTUDIO_READONLY_SYMBOLS
+/////////////////////////////////////////////////////////////////////////////
+//
+// Generated from the TEXTINCLUDE 2 resource.
+//
+#include "afxres.h"
+
+/////////////////////////////////////////////////////////////////////////////
+#undef APSTUDIO_READONLY_SYMBOLS
+
+/////////////////////////////////////////////////////////////////////////////
+// English (U.K.) resources
+
+#if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_ENG)
+#ifdef _WIN32
+LANGUAGE LANG_ENGLISH, SUBLANG_ENGLISH_UK
+#pragma code_page(1252)
+#endif //_WIN32
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Dialog
+//
+
+IDD_DIALOG_COMMENT2 DIALOGEX 37, 70, 291, 145
+STYLE DS_SETFONT | DS_MODALFRAME | DS_FIXEDSYS | DS_CENTER | WS_VISIBLE | WS_CAPTION | WS_SYSMENU
+CAPTION "PBSCC Proxy"
+FONT 8, "MS Shell Dlg", 0, 0, 0x0
+BEGIN
+    GROUPBOX        "Description",-1,7,7,277,116
+    COMBOBOX        IDC_COMBO_MSG,50,18,228,125,CBS_DROPDOWN | CBS_AUTOHSCROLL | CBS_DISABLENOSCROLL | WS_VSCROLL | WS_GROUP | WS_TABSTOP
+    EDITTEXT        IDC_PATH,50,34,228,84,ES_MULTILINE | ES_AUTOVSCROLL | ES_AUTOHSCROLL | ES_READONLY | WS_VSCROLL | WS_HSCROLL | NOT WS_TABSTOP
+    DEFPUSHBUTTON   "OK",IDOK,88,127,50,14,WS_GROUP
+    PUSHBUTTON      "Cancel",IDCANCEL,145,127,50,14,WS_GROUP
+    LTEXT           "Message :",-1,13,19,35,10,NOT WS_GROUP
+    LTEXT           "Path :",-1,13,35,35,10,NOT WS_GROUP
+END
+
+IDD_DIALOG_LOGIN DIALOG  75, 70, 176, 69
+STYLE DS_SETFONT | DS_MODALFRAME | DS_CENTER | WS_VISIBLE | WS_CAPTION | WS_SYSMENU
+CAPTION "PBSCC Proxy authorization"
+FONT 8, "MS Shell Dlg"
+BEGIN
+    RTEXT           "User :",-1,7,6,40,12
+    RTEXT           "Password :",-1,7,23,40,12
+    EDITTEXT        IDC_SVNUID,52,6,110,12
+    EDITTEXT        IDC_SVNPWD,52,23,110,12,ES_PASSWORD
+    DEFPUSHBUTTON   "OK",IDOK,29,46,50,14
+    PUSHBUTTON      "Cancel",IDCANCEL,91,47,50,14
+END
+
+
+#ifdef APSTUDIO_INVOKED
+/////////////////////////////////////////////////////////////////////////////
+//
+// TEXTINCLUDE
+//
+
+1 TEXTINCLUDE 
+BEGIN
+    "resource.\0"
+END
+
+
+3 TEXTINCLUDE 
+BEGIN
+    "\r\0"
+END
+
+#endif    // APSTUDIO_INVOKED
+
+#endif    // English (U.K.) resources
+/////////////////////////////////////////////////////////////////////////////
+
+
+
+#ifndef APSTUDIO_INVOKED
+/////////////////////////////////////////////////////////////////////////////
+//
+// Generated from the TEXTINCLUDE 3 resource.
+//
+
+
+/////////////////////////////////////////////////////////////////////////////
+#endif    // not APSTUDIO_INVOKED
+

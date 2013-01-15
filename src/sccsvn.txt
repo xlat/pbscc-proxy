@@ -1,0 +1,14 @@
+map of scc commands to svn commands
+
+** SccInfo OLD
+
+:: get all files of workcopy and their revisions
+svn info --recursive --xml D:\Home\Projects\pbscc-project
+:: get files with lockby proprty set
+svn propget lockby --recursive --xml D:\Home\Projects\pbscc-project
+
+** SccInfo NEW
+:: get file list and locks (a little bit long because it works with server and not with local copy)
+svn list --recursive --xml --revision BASE pbscc-project
+:: alternatively we can use "svn status" because it works with local copy
+svn status --xml svn2

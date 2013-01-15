@@ -1,0 +1,160 @@
+the number in the first line, is a version of the entries file
+
+the line with one symbol "\f" (asci=12) is a separator between entries
+
+C structure for entry : svn_wc_entry_t
+
+
+/** A working copy entry -- that is, revision control information about
+ * one versioned entity.
+ */
+typedef struct svn_wc_entry_t
+{
+  /* IMPORTANT: If you extend this structure, check svn_wc_entry_dup() to see
+     if you need to extend that as well. */
+
+  /* General Attributes */
+
+  /** entry's name */
+  const char *name;
+
+  /** base revision */
+  svn_revnum_t revision;
+
+  /** url in repository */
+  const char *url;
+
+  /** canonical repository URL or NULL if not known */
+  const char *repos;
+
+  /** repository uuid */
+  const char *uuid;
+
+  /** node kind (file, dir, ...) */
+  svn_node_kind_t kind;
+
+  /* State information */
+
+  /** scheduling (add, delete, replace ...) */
+  svn_wc_schedule_t schedule;
+
+  /** in a copied state */
+  svn_boolean_t copied;
+
+  /** deleted, but parent rev lags behind */
+  svn_boolean_t deleted;
+
+  /** absent -- we know an entry of this name exists, but that's all
+      (usually this happens because of authz restrictions)  */
+  svn_boolean_t absent;
+
+  /** for THIS_DIR entry, implies whole entries file is incomplete */
+  svn_boolean_t incomplete;
+
+  /** copyfrom location */
+  const char *copyfrom_url;
+
+  /** copyfrom revision */
+  svn_revnum_t copyfrom_rev;
+
+  /** old version of conflicted file */
+  const char *conflict_old;
+
+  /** new version of conflicted file */
+  const char *conflict_new;
+
+  /** working version of conflicted file */
+  const char *conflict_wrk;
+
+  /** property reject file */
+  const char *prejfile;
+
+  /** last up-to-date time for text contents (0 means no information available)
+   */
+  apr_time_t text_time;
+
+  /** last up-to-date time for properties (0 means no information available) */
+  apr_time_t prop_time;
+
+  /** Hex MD5 checksum for the untranslated text base file,
+   * can be @c NULL for backwards compatibility.
+   */
+  const char *checksum;
+
+  /* "Entry props" */
+
+  /** last revision this was changed */
+  svn_revnum_t cmt_rev;
+
+  /** last date this was changed */
+  apr_time_t cmt_date;
+
+  /** last commit author of this item */
+  const char *cmt_author;
+
+  /** lock token or NULL if path not locked in this WC
+   * @since New in 1.2.
+   */
+  const char *lock_token;
+  /** lock owner, or NULL if not locked in this WC
+   * @since New in 1.2.
+   */
+  const char *lock_owner;
+  /** lock comment or NULL if not locked in this WC or no comment
+   * @since New in 1.2.
+   */
+  const char *lock_comment;
+  /** Lock creation date or 0 if not locked in this WC
+   * @since New in 1.2.
+   */
+  apr_time_t lock_creation_date;
+
+  /** Whether this entry has any working properties.
+   * False if this information is not stored in the entry.
+   *
+   * @since New in 1.4. */
+  svn_boolean_t has_props;
+
+  /** Whether this entry has property modifications.
+   *
+   * @note For working copies in older formats, this flag is not valid.
+   *
+   * @see svn_wc_props_modified_p().
+   *
+   * @since New in 1.4. */
+  svn_boolean_t has_prop_mods;
+
+  /** A space-separated list of all properties whose presence/absence is cached
+   * in this entry.
+   *
+   * @see @c present_props.
+   *
+   * @since New in 1.4. */
+  const char *cachable_props;
+
+  /** Cached property existence for this entry.
+   * This is a space-separated list of property names.  If a name exists in
+   * @c cachable_props but not in this list, this entry does not have that
+   * property.  If a name exists in both lists, the property is present on this
+   * entry.
+   *
+   * @since New in 1.4. */
+  const char *present_props;
+
+  /* IMPORTANT: If you extend this structure, check svn_wc_entry_dup() to see
+     if you need to extend that as well. */
+} svn_wc_entry_t;
+-------------------------------------------------------
+1 Name
+2 Kind (file,dir) //the last item for not owner dirs except when it's scheduled for something
+3 Revision (usualy setup for owner dirs)
+4 Url (usually valid only for owner)
+5 Repository (usually valid only for owner)
+6 Schedule (delete,add,replace)
+7 Text Timestamp (File Timestamp ?)
+8 Checksum (32 bytes of 0-9 and a-f characters) ex:e71c273fbb7f2b04b6e39459a0299c24
+9 Last Commit Timestamp (2005-11-15T14:16:31.653187Z)
+10 Last Commit Revision (usually valid for files)
+11 Last Commit Author
+
+then not very interesting properties following...

@@ -1,0 +1,28 @@
+
+EXPORTS
+	SccGetVersion
+	SccGetVersion
+	SccInitialize
+	SccUninitialize
+	SccOpenProject
+	SccCloseProject
+	SccGetProjPath
+	SccGet
+	SccCheckout
+	SccUncheckout
+	SccCheckin
+	SccAdd
+	SccRemove
+	SccRename
+	SccDiff
+	SccHistory
+	SccProperties
+	SccQueryInfo
+	SccPopulateList
+	SccGetEvents
+	SccRunScc
+	SccGetCommandOptions
+	SccAddFromScc
+	SccSetOption
+	SccQueryInfoEx
+	PbSccVersion
